@@ -1,0 +1,15 @@
+{
+    "require": {
+        "google/cloud-functions-framework": "^0.8",
+        "guzzlehttp/guzzle": "^6.2",
+        "symfony/dom-crawler": "^4.3",
+        "symfony/css-selector": "^4.3",
+        "thiagoalessio/tesseract_ocr": "^2.9"
+    },
+    "scripts": {
+        "start": [
+           "Composer\\Config::disableProcessTimeout",
+           "FUNCTION_TARGET=SPBookOrderHelper php -S localhost:${PORT:-8080} vendor/bin/router.php"
+        ]
+    }
+}
