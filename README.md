@@ -29,6 +29,13 @@ firebase_host=your-firebase-host
 ./request_token.sh
 ```
 
+- Requesting a booking form via this API service:
+- I assume that the API service endpoint is `https://us-central1-webcrawler-325501.cloudfunctions.net/SPBookOrderHelper` after deploying this to Cloud Functions.
+
+```
+curl -X POST -H 'Content-Type: application/json' https://us-central1-webcrawler-325501.cloudfunctions.net/SPBookOrderHelper --data '{"name":"your-name","mobile_phone":"your-mobile-phone","contact_address":"contact-address","contact_email":"peter279k@gmail.com","bank_number":"your-bank-number","bank_account_number":"your-bank-account-number"}'
+```
+
 # Google Cloud Function Deployment
 
 - Run `./deploy.sh`
