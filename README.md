@@ -29,11 +29,23 @@ firebase_host=your-firebase-host
 ./request_token.sh
 ```
 
-- Requesting a booking form via this API service:
+- Requesting a selling book form order via this API service:
 - I assume that the API service endpoint is `https://us-central1-webcrawler-325501.cloudfunctions.net/SPBookOrderHelper` after deploying this to Cloud Functions.
 
 ```
 curl -X POST -H 'Content-Type: application/json' https://us-central1-webcrawler-325501.cloudfunctions.net/SPBookOrderHelper --data '{"name":"your-name","mobile_phone":"your-mobile-phone","contact_address":"contact-address","contact_email":"peter279k@gmail.com","bank_number":"your-bank-number","bank_account_number":"your-bank-account-number"}'
+```
+
+- Deleting a selling book form order with specific order number via this API service:
+
+```
+
+```
+
+- The selling book form will be available on following URL:
+
+```
+https://www.spbook.com.tw/bookrecycle.php?step=3&v1=3&order={your-selling-book-order-number}&delivery=12
 ```
 
 # Google Cloud Function Deployment
@@ -52,6 +64,7 @@ curl -X POST -H 'Content-Type: application/json' https://us-central1-webcrawler-
 - https://www.spbook.com.tw/bookrecycle.php?step=1&v1=3
 - https://www.spbook.com.tw/bookrecycle.php?step=2&v1=3
 - https://www.spbook.com.tw/spbook_helloworld.php
+- https://github.com/google-github-actions/deploy-cloud-functions
 
 
 ## Enjoy it :)!
