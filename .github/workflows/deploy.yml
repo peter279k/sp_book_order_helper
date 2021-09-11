@@ -1,0 +1,32 @@
+name: Deploy SPBookOrderHelper to Google Cloud Functions
+
+on:
+  schedule:
+    - cron: '*/40 * * * *'
+  workflow_dispatch:
+
+jobs:
+  up-and-running:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get working copy
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Update Firebase Realtime Database token with request_token.sh
+        run: |
+          export email=peter279k@gmail.com
+          export password=${{ secrets.EMAIL_PASSWORD }}
+          export token="FAKE_TOKEN"
+          export api_key=${{ secrets.FIREBASE_API_KEY }}
+          export firebase_host=${{ secrets.FIREBASE_HOST }}
+          echo $email >> settings.txt
+          echo $password >> settings.txt
+          echo $token >> settings.txt
+          echo $api_key >> settings.txt
+          echo $firebase_host >> settings.txt
+          export token=$(./request_token.sh | jq .idToken)
+          sed -ie "s/FAKE_TOKEN/$token/g" ./settings.txt
+      - name: Deploy SPBookOrderHelper to Google Cloud Functions
+        run: |
+          ./deploy.sh

@@ -6,6 +6,9 @@ use Symfony\Component\DomCrawler\Crawler;
 
 function SPBookOrderHelper(ServerRequestInterface $request): string
 {
+    if (file_exists('./settings.txt')) {
+        return json_encode(['message' => 'Settings.txt can be found!']);
+    }
     $requestBody = (string)$request->getBody();
     $parsedJson = json_decode($requestBody, true);
     if (gettype($parsedJson) !== 'array') {
@@ -109,4 +112,9 @@ function SPBookOrderHelper(ServerRequestInterface $request): string
         $response = $client->request('PATCH', $firebaseEndPoint, $requestOrderJson);
     }
     return $responseBody;
+}
+
+function DeleteOrder(): boolean
+{
+    
 }

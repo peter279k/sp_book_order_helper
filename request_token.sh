@@ -25,4 +25,4 @@ if [[ $api_key == "" ]]; then
 fi;
 
 
-curl -X POST "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$api_key" --data-binary "{\"email\":"\"$email\"",\"password\":"\"$password\"",\"returnSecureToken\":true}"
+curl --silent -X POST "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$api_key" --data-binary "{\"email\":"\"$email\"",\"password\":"\"$password\"",\"returnSecureToken\":true}"
