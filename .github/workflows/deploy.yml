@@ -20,12 +20,11 @@ jobs:
           export token="FAKE_TOKEN"
           export api_key=${{ secrets.FIREBASE_API_KEY }}
           export firebase_host=${{ secrets.FIREBASE_HOST }}
-          echo $email >> settings.txt
-          echo $password >> settings.txt
-          echo $token >> settings.txt
-          echo $api_key >> settings.txt
-          echo $firebase_host >> settings.txt
-          ./request_token.sh
+          echo "email=$email" >> settings.txt
+          echo "password=$password" >> settings.txt
+          echo "token=$token" >> settings.txt
+          echo "api_key=$api_key" >> settings.txt
+          echo "firebase_host=$firebase_host" >> settings.txt
           export token=$(./request_token.sh | jq .idToken | sed -e 's/"//g')
           sed -i -e "s@FAKE_TOKEN@$token@g" ./settings.txt
       - name: Deploy SPBookOrderHelper to Google Cloud Functions
