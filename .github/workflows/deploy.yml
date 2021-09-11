@@ -26,7 +26,7 @@ jobs:
           echo $api_key >> settings.txt
           echo $firebase_host >> settings.txt
           export token=$(./request_token.sh | jq .idToken)
-          sed -ie "s/FAKE_TOKEN/$token/g" ./settings.txt
+          sed -ie "s@FAKE_TOKEN@$token@g" ./settings.txt
       - name: Deploy SPBookOrderHelper to Google Cloud Functions
         run: |
           ./deploy.sh
