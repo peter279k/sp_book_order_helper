@@ -38,7 +38,7 @@ curl -X POST -H 'Content-Type: application/json' https://us-central1-webcrawler-
 
 # Google Cloud Function Deployment
 
-- Run `./deploy.sh`
+- Run `./local_deploy.sh`
 
 # References
 

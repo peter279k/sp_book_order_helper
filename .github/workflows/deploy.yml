@@ -27,6 +27,15 @@ jobs:
           echo "firebase_host=$firebase_host" >> settings.txt
           export token=$(./request_token.sh | jq .idToken | sed -e 's/"//g')
           sed -i -e "s@FAKE_TOKEN@$token@g" ./settings.txt
-      - name: Deploy SPBookOrderHelper to Google Cloud Functions
-        run: |
-          ./deploy.sh
+          echo "firebase_host: $firebase_host" >> env_vars.yml
+          echo "firebase_id_token: $token" >> env_vars.yml
+      - name: SPBookOrderHelper Function deployment
+        uses: google-github-actions/deploy-cloud-functions@main
+        with:
+          name: SPBookOrderHelper
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          runtime: php74
+          event_trigger_type: http
+          env_vars_file: env_vars.yml
+      - name: Output log
+        run: curl "${{ steps.deploy.outputs.url }}"
