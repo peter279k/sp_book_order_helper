@@ -36,5 +36,3 @@ jobs:
           credentials: ${{ secrets.GCP_SA_KEY }}
           runtime: php74
           env_vars_file: env_vars.yml
-      - name: Output log
-        run: curl "${{ steps.deploy.outputs.url }}"
