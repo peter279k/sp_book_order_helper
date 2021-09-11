@@ -65,6 +65,7 @@ https://www.spbook.com.tw/bookrecycle.php?step=3&v1=3&order={your-selling-book-o
 - https://www.spbook.com.tw/bookrecycle.php?step=2&v1=3
 - https://www.spbook.com.tw/spbook_helloworld.php
 - https://github.com/google-github-actions/deploy-cloud-functions
-
+- https://cloud.google.com/vision/docs/ocr#vision_text_detection-drest
+- https://cloud.google.com/vision/docs/setup
 
 ## Enjoy it :)!
